@@ -1,0 +1,2347 @@
+<html lang="ja" dir="ltr"><head>
+      <meta data-sandbox-injected="" http-equiv="Content-Security-Policy" content="
+          default-src 'none';
+          base-uri 'none';
+          connect-src https://fonts.gstatic.com https://www.gstatic.com;
+          font-src https://fonts.gstatic.com data:;
+          form-action 'none';
+          
+          worker-src blob: https://*.scf.usercontent.goog;
+          img-src data: https://encrypted-tbn0.gstatic.com https://encrypted-tbn1.gstatic.com https://encrypted-tbn2.gstatic.com https://encrypted-tbn3.gstatic.com ;
+          media-src 'none';
+          object-src 'none';
+          script-src 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://widgetlibs.static.usercontent.goog https://*.scf.usercontent.goog;
+          style-src 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://www.gstatic.com/;">
+      <meta data-sandbox-injected="" charset="UTF-8">
+      <meta data-sandbox-injected="" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="enable-onep-api" content="false"><script data-sandbox-injected="true">(function(){var g=Object.defineProperty,k=globalThis,l=function(a,b){if(b)a:{var c=k;a=a.split(".");for(var d=0;d<a.length-1;d++){var e=a[d];if(!(e in c))break a;c=c[e]}a=a[a.length-1];d=c[a];b=b(d);b!=d&&b!=null&&g(c,a,{configurable:!0,writable:!0,value:b})}};l("Promise.withResolvers",function(a){return a?a:function(){var b,c;return{promise:new Promise(function(d,e){b=d;c=e}),resolve:b,reject:c}}});var m=function(a){return typeof a==="object"&&a!==null&&"kind"in a&&typeof a.kind==="string"&&("payload"in a||a.kind==="___CROSS_FRAME_HANDSHAKE___")},n=class{constructor(){this.j=new Map}i(a){var b=a.data;if(m(b)){let c=b.payload;if(b=this.j.get(b.kind))(a=a.ports&&a.ports.length>0?a.ports:void 0)?b(c,a):b(c)}}sendMessage(a,b,c){if(!this.port)throw Error("a");a={kind:String(a),payload:b||{}};c&&c.length>0?this.port.postMessage(a,c):this.port.postMessage(a)}},p=async function(a){var b=window.parent;
+return a.h?{}:new Promise(c=>{var d=e=>{e.source===b&&m(e.data)&&e.data.kind==="___CROSS_FRAME_HANDSHAKE___"&&(window.removeEventListener("message",d),a.port=e.ports[0],a.port.onmessage=a.i.bind(a),a.h=!0,c(e.data.payload||{}))};window.addEventListener("message",d)})},q=class extends n{constructor(){super(...arguments);this.h=!1}};if(typeof window!=="undefined"&&window.history){let a=window.history.replaceState.bind(window.history);window.history.replaceState=(c,d,e)=>{try{a(c,d,e)}catch{}};let b=window.history.pushState.bind(window.history);window.history.pushState=(c,d,e)=>{try{b(c,d,e)}catch{}}}
+if(typeof window!=="undefined"&&window.fetch){let a=window.fetch.bind(window);window.fetch=async(...b)=>{try{return await a(...b)}catch(c){b=b[0];b=typeof b==="string"?b:b&&typeof b==="object"&&"url"in b?String(b.url||""):String(b||"");if(b.includes("tracking")||b.includes("analytics")||b.includes("beacon"))return new Response(null,{status:204});throw c;}}}var {promise:r,resolve:t}=Promise.withResolvers(),{promise:u,resolve:v}=Promise.withResolvers(),w=!1;
+(async function(){var a=new q,b=await p(a);b&&b.enableSandboxToEditorSync&&(w=!!b.enableSandboxToEditorSync);if(b&&b.initialPayload){let c=b.initialPayload;window.initialPayload=c;window.setTimeout(()=>{window.dispatchEvent(new MessageEvent("message",{data:c}))},0)}t(a);(a=a.port)&&v(a)})();function x(a){r.then(b=>{b.sendMessage("ERROR",{error:a})})}window.onerror=(a,b,c,d,e)=>{x(e);return!0};
+window.onunhandledrejection=a=>{var b=String(a.reason||"");b.includes("Failed to fetch")||b.includes("Content Security Policy")||b.includes("replaceState")||x(Error(a.reason));a.preventDefault()};
+window.document.addEventListener("DOMContentLoaded",()=>{r.then(a=>{a.sendMessage("ISOLATE_READY",{});var b=window.document.querySelector("#resize-target")||window.document.body,c=NaN,d=NaN,e=!1;(new ResizeObserver(()=>{e||(e=!0,window.requestAnimationFrame(()=>{e=!1;var f=Math.ceil(b.scrollHeight),h=Math.ceil(b.scrollWidth);f===c&&h===d||f===0&&h===0||(c=f,d=h,a.sendMessage("RESIZE",{height:f,width:h}))}))})).observe(b);if(w){let f;(new MutationObserver(()=>{f&&window.clearTimeout(f);f=window.setTimeout(()=>
+{f=void 0;a.sendMessage("HTML_CHANGED",{html:"<!DOCTYPE html>\n"+window.document.documentElement.outerHTML})},500)})).observe(window.document.documentElement,{attributes:!0,childList:!0,subtree:!0,characterData:!0})}})});window.addEventListener("resizeRequest",()=>{r.then(a=>{var b=window.document.querySelector("#resize-target")||window.document.body,c=Math.ceil(b.scrollHeight);b=Math.ceil(b.scrollWidth);c===0&&b===0||a.sendMessage("MANUAL_RESIZE",{height:c,width:b})})});
+function y(a){var b=null;a instanceof Element?b=a:a&&a.nodeType===Node.TEXT_NODE&&(b=a.parentElement);if(!b)return null;for(a=b;a&&a!==window.document.body;){if(a.matches('a,button,input,textarea,select,option,details,summary,area,[jsaction],[data-jsaction],[role],[tabindex]:not([tabindex="-1"])'))return z(a);if(a instanceof HTMLElement&&a.isContentEditable)return z(a);a=a.parentElement}return null}
+function z(a){var b={tagName:a.tagName.toUpperCase(),attributes:{}},c=["role","jsaction","data-jsaction","tabindex"];for(let d of c)c=a.getAttribute(d),c!==null&&(b.attributes[d]=c);a instanceof HTMLElement&&a.isContentEditable&&(b.isContentEditable=!0);return b}window.addEventListener("click",a=>{var b=(a=a.target)?y(a):null;r.then(c=>{c.sendMessage("CLICK",{matchedNode:b})})},!0);
+window.addEventListener("request_window_open",a=>{var b=a.detail;r.then(c=>{c.sendMessage("REQUEST_WINDOW_OPEN",{url:b.url,target:b.target,features:b.features})})});window.sandboxConsoleLog=(a,b)=>{r.then(c=>{c.sendMessage("CONSOLE_LOG",{logLevel:a,message:b})})};if(document.querySelector('meta[name="enable-onep-api"]')?.getAttribute("content")==="true"){let a=!1;window.claimPortReady=()=>{if(a)return null;a=!0;return u}}window.logError=x;}).call(this);</script><script>(function(){window.open=(a,b,d)=>{var c;a&&(c=a instanceof URL?a.toString():String(a));window.dispatchEvent(new CustomEvent("request_window_open",{detail:{url:c,target:b,features:d}}));return null};var e,f,g;function h(a){a.button===0&&((e=a=(a.target instanceof Element?a.target:null)?.closest("a")??void 0)?(a=a.getBoundingClientRect(),f=a.left,g=a.top):g=f=void 0)}function k(){g=f=e=void 0}window.addEventListener("pointerdown",h,!0);window.addEventListener("mousedown",h,!0);
+window.addEventListener("pointercancel",k,!0);
+window.addEventListener("click",a=>{var b=(a.target instanceof Element?a.target:null)?.closest("a"),d=b?.getBoundingClientRect();d=a.detail>0&&b!=null&&e===b&&d!==void 0&&f!==void 0&&g!==void 0&&(Math.abs(d.left-f)>5||Math.abs(d.top-g)>5);k();if(b&&b.hasAttribute("href")){b=b.getAttribute("href")??"";var c=b.trim();c.startsWith("#")||(c=c.replace(/[\u0000-\u0020]+/g,""),c===""||/^javascript:/i.test(c)?a.preventDefault():d||a.defaultPrevented?(a.preventDefault(),a.stopPropagation()):(a.preventDefault(),
+a.stopPropagation(),window.dispatchEvent(new CustomEvent("request_window_open",{detail:{url:b,target:"_blank"}}))))}},!0);}).call(this);</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><title>Generated Interactive Widget</title><script type="module" crossorigin="">
+import { jsx, jsxs } from 'https://widgetlibs.static.usercontent.goog/react/jsx-runtime-Dc9ViRTo.js';
+import React, { useState, useRef, useEffect, useCallback } from 'https://widgetlibs.static.usercontent.goog/react-Dd1pKoqe.js';
+import ReactDOM from 'https://widgetlibs.static.usercontent.goog/react-dom/client-BTuQ-l8_.js';
+import { ErrorBoundary } from 'https://widgetlibs.static.usercontent.goog/react-error-boundary-BY2GTZrN.js';
+
+true              &&(function polyfill() {
+	const relList = document.createElement("link").relList;
+	if (relList && relList.supports && relList.supports("modulepreload")) return;
+	for (const link of document.querySelectorAll("link[rel=\"modulepreload\"]")) processPreload(link);
+	new MutationObserver((mutations) => {
+		for (const mutation of mutations) {
+			if (mutation.type !== "childList") continue;
+			for (const node of mutation.addedNodes) if (node.tagName === "LINK" && node.rel === "modulepreload") processPreload(node);
+		}
+	}).observe(document, {
+		childList: true,
+		subtree: true
+	});
+	function getFetchOpts(link) {
+		const fetchOpts = {};
+		if (link.integrity) fetchOpts.integrity = link.integrity;
+		if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
+		if (link.crossOrigin === "use-credentials") fetchOpts.credentials = "include";
+		else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
+		else fetchOpts.credentials = "same-origin";
+		return fetchOpts;
+	}
+	function processPreload(link) {
+		if (link.ep) return;
+		link.ep = true;
+		const fetchOpts = getFetchOpts(link);
+		fetch(link.href, fetchOpts);
+	}
+}());
+
+const LANG = "ja";
+const DIR = "ltr";
+class SoundController {
+  ctx = null;
+  init() {
+    if (!this.ctx) {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+  playMatch() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(523.25, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.2);
+    } catch (e) {
+    }
+  }
+  playGameOver() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(293.66, this.ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(146.83, this.ctx.currentTime + 0.5);
+      gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.5);
+    } catch (e) {
+    }
+  }
+  playFlashyBurst() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      const freqs = [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98];
+      freqs.forEach((freq, idx) => {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, now + idx * 0.03);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + idx * 0.03 + 0.15);
+        gain.gain.setValueAtTime(0, now + idx * 0.03);
+        gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.03 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(1e-3, now + idx * 0.03 + 0.18);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + idx * 0.03);
+        osc.stop(now + idx * 0.03 + 0.2);
+      });
+      const bufferSize = this.ctx.sampleRate * 0.3;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noiseNode = this.ctx.createBufferSource();
+      noiseNode.buffer = buffer;
+      const bandpass = this.ctx.createBiquadFilter();
+      bandpass.type = "bandpass";
+      bandpass.frequency.setValueAtTime(4e3, now);
+      bandpass.frequency.exponentialRampToValueAtTime(12e3, now + 0.2);
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.06, now);
+      noiseGain.gain.exponentialRampToValueAtTime(1e-3, now + 0.25);
+      noiseNode.connect(bandpass);
+      bandpass.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+      noiseNode.start(now);
+      noiseNode.stop(now + 0.3);
+    } catch (e) {
+    }
+  }
+  playExplosion() {
+    this.playFlashyBurst();
+  }
+}
+const sounds = new SoundController();
+const EMOTICONS = [
+  "( ´∀｀)",
+  "(´▽｀)",
+  "(´；ω；`)",
+  "(｀・ω・´)",
+  "(´∀｀*)",
+  "(ｏ´∀｀ｏ)",
+  "(´-ω-｀)",
+  "(* ﾟ∀ﾟ)",
+  "(ノД`)・゜・",
+  "(；´Д｀)",
+  "(*'ω'*)",
+  "(´ー｀)",
+  "(^◇^)",
+  "(´д｀σ)σ",
+  "(ﾟ∀ﾟ)",
+  "(*^^*)",
+  "(・∀・)",
+  "(。_。)",
+  "(ﾟДﾟ;)",
+  "(`･ω･´)"
+];
+const BOARD_COLS = 14;
+const BOARD_ROWS = 14;
+function FallPuzzleGame() {
+  const [board, setBoard] = useState(
+    Array(BOARD_ROWS).fill(null).map(() => Array(BOARD_COLS).fill(null))
+  );
+  const [currentPiece, setCurrentPiece] = useState(null);
+  const [score, setScore] = useState(0);
+  const [gauge, setGauge] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [speed, setSpeed] = useState(1);
+  const [particles, setParticles] = useState([]);
+  const [flashActive, setFlashActive] = useState(false);
+  const lastTimeRef = useRef(performance.now());
+  const dropTimerRef = useRef(0);
+  const gaugeRef = useRef(0);
+  useEffect(() => {
+    gaugeRef.current = gauge;
+  }, [gauge]);
+  const spawnPiece = useCallback((currentBoard) => {
+    if (gaugeRef.current >= 10) {
+      const spawnX2 = Math.floor((BOARD_COLS - 1) / 2);
+      const spawnY2 = 0;
+      if (currentBoard[spawnY2][spawnX2] !== null) {
+        setIsGameOver(true);
+        sounds.playGameOver();
+        return null;
+      }
+      setGauge(0);
+      gaugeRef.current = 0;
+      return { x: spawnX2, y: spawnY2, chars: ["消"], isSpecial: true };
+    }
+    const randomEmo = EMOTICONS[Math.floor(Math.random() * EMOTICONS.length)];
+    const chars = randomEmo.split("");
+    const len = chars.length;
+    const spawnX = Math.max(0, Math.floor((BOARD_COLS - len) / 2));
+    const spawnY = 0;
+    for (let i = 0; i < len; i++) {
+      if (spawnX + i < BOARD_COLS && currentBoard[spawnY][spawnX + i] !== null) {
+        setIsGameOver(true);
+        sounds.playGameOver();
+        return null;
+      }
+    }
+    return { x: spawnX, y: spawnY, chars };
+  }, []);
+  const resetGame = () => {
+    const emptyBoard = Array(BOARD_ROWS).fill(null).map(() => Array(BOARD_COLS).fill(null));
+    setBoard(emptyBoard);
+    setScore(0);
+    setGauge(0);
+    gaugeRef.current = 0;
+    setIsGameOver(false);
+    setIsPlaying(true);
+    const initialPiece = spawnPiece(emptyBoard);
+    setCurrentPiece(initialPiece);
+    lastTimeRef.current = performance.now();
+    dropTimerRef.current = 0;
+  };
+  useEffect(() => {
+    resetGame();
+  }, [spawnPiece]);
+  const checkAndClearMatches = (grid) => {
+    let newGrid = grid.map((row) => [...row]);
+    let matched = false;
+    let matchCount = 0;
+    const toClear = Array(BOARD_ROWS).fill(null).map(() => Array(BOARD_COLS).fill(false));
+    for (let r = 0; r < BOARD_ROWS; r++) {
+      for (let c = 0; c < BOARD_COLS; c++) {
+        const char = newGrid[r][c];
+        if (!char) continue;
+        if (c < BOARD_COLS - 1 && char === newGrid[r][c + 1]) {
+          toClear[r][c] = true;
+          toClear[r][c + 1] = true;
+          matched = true;
+        }
+        if (r < BOARD_ROWS - 1 && char === newGrid[r + 1][c]) {
+          toClear[r][c] = true;
+          toClear[r + 1][c] = true;
+          matched = true;
+        }
+      }
+    }
+    if (matched) {
+      for (let r = 0; r < BOARD_ROWS; r++) {
+        for (let c = 0; c < BOARD_COLS; c++) {
+          if (toClear[r][c]) {
+            newGrid[r][c] = null;
+            matchCount++;
+          }
+        }
+      }
+      setGauge((prev) => Math.min(10, prev + matchCount));
+      for (let c = 0; c < BOARD_COLS; c++) {
+        let writeIdx = BOARD_ROWS - 1;
+        for (let r = BOARD_ROWS - 1; r >= 0; r--) {
+          if (newGrid[r][c] !== null) {
+            newGrid[writeIdx][c] = newGrid[r][c];
+            if (writeIdx !== r) {
+              newGrid[r][c] = null;
+            }
+            writeIdx--;
+          }
+        }
+      }
+      sounds.playMatch();
+      setScore((prev) => prev + matchCount * 15);
+      return checkAndClearMatches(newGrid);
+    }
+    return newGrid;
+  };
+  useEffect(() => {
+    if (particles.length === 0) return;
+    let frameId;
+    const updateParticles = () => {
+      setParticles(
+        (prev) => prev.map((p) => ({
+          ...p,
+          x: p.x + p.vx,
+          y: p.y + p.vy,
+          alpha: p.alpha - 0.04,
+          size: Math.max(0, p.size * 0.95)
+        })).filter((p) => p.alpha > 0)
+      );
+      frameId = requestAnimationFrame(updateParticles);
+    };
+    frameId = requestAnimationFrame(updateParticles);
+    return () => cancelAnimationFrame(frameId);
+  }, [particles.length]);
+  const triggerFlashyEffect = (centerX, centerY) => {
+    setFlashActive(true);
+    setTimeout(() => setFlashActive(false), 300);
+    const newParticles = [];
+    const colors = ["#000000", "#333333", "#555555", "#777777", "#999999"];
+    for (let i = 0; i < 40; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed2 = 1.5 + Math.random() * 4.5;
+      newParticles.push({
+        id: Date.now() + i + Math.random(),
+        x: centerX + (Math.random() * 20 - 10),
+        y: centerY + (Math.random() * 20 - 10),
+        vx: Math.cos(angle) * speed2,
+        vy: Math.sin(angle) * speed2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 4 + Math.random() * 6,
+        alpha: 1
+      });
+    }
+    setParticles((prev) => [...prev, ...newParticles]);
+  };
+  const lockPiece = useCallback((piece, currentBoard) => {
+    let updatedBoard = currentBoard.map((row) => [...row]);
+    if (piece.isSpecial) {
+      const touchedChars = /* @__PURE__ */ new Set();
+      const checkCoords = [
+        { r: piece.y + 1, c: piece.x },
+        { r: piece.y, c: piece.x - 1 },
+        { r: piece.y, c: piece.x + 1 }
+      ];
+      checkCoords.forEach(({ r, c }) => {
+        if (r >= 0 && r < BOARD_ROWS && c >= 0 && c < BOARD_COLS) {
+          const char = updatedBoard[r][c];
+          if (char && char !== "消") {
+            touchedChars.add(char);
+          }
+        }
+      });
+      let clearedCount = 0;
+      if (touchedChars.size > 0) {
+        for (let r = 0; r < BOARD_ROWS; r++) {
+          for (let c = 0; c < BOARD_COLS; c++) {
+            if (updatedBoard[r][c] && touchedChars.has(updatedBoard[r][c])) {
+              updatedBoard[r][c] = null;
+              clearedCount++;
+            }
+          }
+        }
+      }
+      updatedBoard[piece.y][piece.x] = null;
+      for (let c = 0; c < BOARD_COLS; c++) {
+        let writeIdx = BOARD_ROWS - 1;
+        for (let r = BOARD_ROWS - 1; r >= 0; r--) {
+          if (updatedBoard[r][c] !== null) {
+            updatedBoard[writeIdx][c] = updatedBoard[r][c];
+            if (writeIdx !== r) {
+              updatedBoard[r][c] = null;
+            }
+            writeIdx--;
+          }
+        }
+      }
+      sounds.playFlashyBurst();
+      const colPercent = (piece.x + 0.5) / BOARD_COLS * 100;
+      const rowPercent = (piece.y + 0.5) / BOARD_ROWS * 100;
+      triggerFlashyEffect(colPercent, rowPercent);
+      if (clearedCount > 0) {
+        setScore((prev) => prev + clearedCount * 15);
+        setGauge((prev) => Math.min(10, prev + clearedCount));
+      }
+      const clearedBoard = checkAndClearMatches(updatedBoard);
+      setBoard(clearedBoard);
+      const nextPiece = spawnPiece(clearedBoard);
+      if (nextPiece) {
+        setCurrentPiece(nextPiece);
+      }
+    } else {
+      piece.chars.forEach((char, idx) => {
+        const cx = piece.x + idx;
+        if (piece.y >= 0 && piece.y < BOARD_ROWS && cx >= 0 && cx < BOARD_COLS) {
+          updatedBoard[piece.y][cx] = char;
+        }
+      });
+      const clearedBoard = checkAndClearMatches(updatedBoard);
+      setBoard(clearedBoard);
+      const nextPiece = spawnPiece(clearedBoard);
+      if (nextPiece) {
+        setCurrentPiece(nextPiece);
+      }
+    }
+  }, [spawnPiece]);
+  useEffect(() => {
+    if (!isPlaying || isGameOver || !currentPiece) return;
+    lastTimeRef.current = performance.now();
+    let frameId;
+    const tick = (now) => {
+      const delta = (now - lastTimeRef.current) / 1e3;
+      lastTimeRef.current = now;
+      dropTimerRef.current += delta;
+      const dropInterval = Math.max(0.1, 1.2 - speed * 0.2);
+      if (dropTimerRef.current >= dropInterval) {
+        dropTimerRef.current = 0;
+        const nextY = currentPiece.y + 1;
+        let canMove = true;
+        if (nextY >= BOARD_ROWS) {
+          canMove = false;
+        } else {
+          for (let i = 0; i < currentPiece.chars.length; i++) {
+            const cx = currentPiece.x + i;
+            if (cx >= 0 && cx < BOARD_COLS && board[nextY][cx] !== null) {
+              canMove = false;
+              break;
+            }
+          }
+        }
+        if (canMove) {
+          setCurrentPiece((prev) => prev ? { ...prev, y: nextY } : null);
+        } else {
+          lockPiece(currentPiece, board);
+        }
+      }
+      frameId = requestAnimationFrame(tick);
+    };
+    frameId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameId);
+  }, [isPlaying, isGameOver, currentPiece, board, speed, lockPiece]);
+  const handleMoveLeft = () => {
+    if (!currentPiece || isGameOver || !isPlaying) return;
+    const nextX = currentPiece.x - 1;
+    if (nextX >= 0) {
+      let canMove = true;
+      if (board[currentPiece.y][nextX] !== null) {
+        canMove = false;
+      }
+      if (canMove) {
+        setCurrentPiece((prev) => prev ? { ...prev, x: nextX } : null);
+      }
+    }
+  };
+  const handleMoveRight = () => {
+    if (!currentPiece || isGameOver || !isPlaying) return;
+    const nextX = currentPiece.x + 1;
+    const len = currentPiece.chars.length;
+    if (nextX + len <= BOARD_COLS) {
+      let canMove = true;
+      if (board[currentPiece.y][nextX + len - 1] !== null) {
+        canMove = false;
+      }
+      if (canMove) {
+        setCurrentPiece((prev) => prev ? { ...prev, x: nextX } : null);
+      }
+    }
+  };
+  const handleMoveDown = () => {
+    if (!currentPiece || isGameOver || !isPlaying) return;
+    const nextY = currentPiece.y + 1;
+    let canMove = true;
+    if (nextY >= BOARD_ROWS) {
+      canMove = false;
+    } else {
+      for (let i = 0; i < currentPiece.chars.length; i++) {
+        const cx = currentPiece.x + i;
+        if (board[nextY][cx] !== null) {
+          canMove = false;
+          break;
+        }
+      }
+    }
+    if (canMove) {
+      setCurrentPiece((prev) => prev ? { ...prev, y: nextY } : null);
+    } else {
+      lockPiece(currentPiece, board);
+    }
+  };
+  const handleFlipEmoticon = () => {
+    if (!currentPiece || isGameOver || !isPlaying || currentPiece.isSpecial) return;
+    const mirrorMap = {
+      "(": ")",
+      ")": "(",
+      "[": "]",
+      "]": "[",
+      "{": "}",
+      "}": "{",
+      "<": ">",
+      ">": "<",
+      "´": "`",
+      "`": "´",
+      "ヾ": "ﾉ",
+      "ﾉ": "ヾ",
+      "ヽ": "ノ",
+      "ノ": "ヽ",
+      "σ": "∂",
+      "∂": "σ",
+      "’": "‘",
+      "‘": "’"
+    };
+    const reversed = [...currentPiece.chars].reverse().map((char) => mirrorMap[char] || char);
+    setCurrentPiece((prev) => prev ? { ...prev, chars: reversed } : null);
+  };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        handleMoveLeft();
+      } else if (e.key === "ArrowRight") {
+        handleMoveRight();
+      } else if (e.key === "ArrowDown") {
+        handleMoveDown();
+      } else if (e.key === "ArrowUp" || e.key === " ") {
+        e.preventDefault();
+        handleFlipEmoticon();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentPiece, board, isGameOver, isPlaying, lockPiece]);
+  return /* @__PURE__ */ jsxs("div", { dir: DIR, lang: LANG, className: "w-full bg-card text-foreground flex flex-col font-sans select-none overflow-hidden", children: [
+    /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between px-5 py-3 border-b border-border bg-card", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex gap-4", children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-col", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground font-medium", children: "スコア" }),
+          /* @__PURE__ */ jsx("span", { className: "text-lg font-medium tabular-nums", children: score })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-col", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground font-medium", children: "速度" }),
+          /* @__PURE__ */ jsx("span", { className: "text-lg font-medium tabular-nums", children: speed })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "flex gap-2", children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => setIsPlaying(!isPlaying),
+            disabled: isGameOver,
+            className: "w-9 h-9 rounded-full flex items-center justify-center bg-muted hover:bg-secondary-hover transition-colors disabled:opacity-40",
+            "aria-label": isPlaying ? "一時停止" : "再開",
+            children: /* @__PURE__ */ jsx("span", { className: "material-icons !text-base", children: isPlaying ? "pause" : "play_arrow" })
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: resetGame,
+            className: "w-9 h-9 rounded-full flex items-center justify-center bg-muted hover:bg-secondary-hover transition-colors",
+            "aria-label": "リセット",
+            children: /* @__PURE__ */ jsx("span", { className: "material-icons !text-base", children: "refresh" })
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "relative w-full border-b border-border bg-white flex items-stretch justify-center p-3 pb-8 gap-3", children: [
+      /* @__PURE__ */ jsxs("div", { className: `relative flex-1 max-w-[420px] bg-white rounded-lg border p-1 overflow-hidden transition-colors duration-200 ${flashActive ? "border-black bg-stone-100 ring-4 ring-black/10" : "border-stone-300"}`, children: [
+        /* @__PURE__ */ jsx("div", { className: "grid grid-cols-[repeat(14,minmax(0,1fr))] gap-0 w-full bg-white", children: Array(BOARD_ROWS).fill(null).map(
+          (_, r) => Array(BOARD_COLS).fill(null).map((_2, c) => {
+            let cellChar = board[r][c];
+            let isCurrent = false;
+            let isSpecialBlock = false;
+            if (currentPiece && currentPiece.y === r) {
+              const offset = c - currentPiece.x;
+              if (offset >= 0 && offset < currentPiece.chars.length) {
+                cellChar = currentPiece.chars[offset];
+                isCurrent = true;
+                if (currentPiece.isSpecial) isSpecialBlock = true;
+              }
+            }
+            return /* @__PURE__ */ jsx(
+              "div",
+              {
+                className: "aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold",
+                children: /* @__PURE__ */ jsx("div", { className: "absolute inset-0", children: /* @__PURE__ */ jsx(
+                  "div",
+                  {
+                    className: `w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none ${cellChar ? isCurrent ? isSpecialBlock ? "bg-transparent text-black font-black scale-110" : "bg-transparent text-black font-black scale-110" : "bg-transparent text-black font-bold" : "bg-white text-transparent"}`,
+                    children: cellChar || "."
+                  }
+                ) })
+              },
+              `${r}-${c}`
+            );
+          })
+        ) }),
+        /* @__PURE__ */ jsx("div", { className: "absolute inset-0 pointer-events-none z-20 overflow-hidden", children: particles.map((p) => /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: "absolute rounded-full transform -translate-x-1/2 -translate-y-1/2",
+            style: {
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              backgroundColor: p.color,
+              opacity: p.alpha
+            }
+          },
+          p.id
+        )) }),
+        isGameOver && /* @__PURE__ */ jsxs("div", { className: "absolute inset-0 bg-white/95 flex flex-col items-center justify-center gap-2 p-4 text-center z-10", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-sm font-medium text-black", children: "ゲームオーバー" }),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              onClick: resetGame,
+              className: "px-4 h-9 rounded-full text-sm font-medium bg-black text-white hover:bg-stone-800 transition-colors",
+              children: "もう一度挑戦"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "w-14 flex flex-col items-center bg-white border border-stone-300 rounded-lg p-2 justify-between", children: [
+        /* @__PURE__ */ jsxs("div", { className: "text-center w-full flex flex-col items-center gap-0.5", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-[10px] font-bold text-black leading-tight", children: "SP" }),
+          /* @__PURE__ */ jsxs("span", { className: "text-xs font-bold text-stone-700 tabular-nums", children: [
+            gauge,
+            "/10"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "flex-1 w-full bg-stone-50 border border-stone-200 rounded-md relative my-2 overflow-hidden flex flex-col justify-end", children: [
+          /* @__PURE__ */ jsx(
+            "div",
+            {
+              className: `w-full transition-all duration-300 rounded-t ${gauge >= 10 ? "bg-black animate-pulse shadow-inner" : "bg-stone-800"}`,
+              style: { height: `${gauge / 10 * 100}%` }
+            }
+          ),
+          gauge >= 10 && /* @__PURE__ */ jsx("div", { className: "absolute inset-0 flex items-center justify-center pointer-events-none", children: /* @__PURE__ */ jsx("span", { className: "text-sm font-black text-white animate-bounce", children: "消" }) })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "text-[9px] text-stone-500 text-center leading-normal scale-90 origin-bottom", children: [
+          "10個で",
+          /* @__PURE__ */ jsx("br", {}),
+          "発動!"
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "absolute bottom-2 left-4 right-4 text-center pointer-events-none z-10", children: /* @__PURE__ */ jsx("span", { className: "text-[10px] sm:text-xs text-stone-600 bg-white/90 px-3 py-1 rounded-full border border-stone-200 shadow-sm", children: "1マス消すごとにゲージが貯まります！10に達すると「消」ブロックが出現！" }) })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "p-5 flex flex-col gap-4 bg-card", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1", children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-center", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-sm font-medium text-muted-foreground", children: "落下速度レベル" }),
+          /* @__PURE__ */ jsx("span", { className: "text-sm font-medium tabular-nums", children: speed })
+        ] }),
+        /* @__PURE__ */ jsx(
+          "input",
+          {
+            type: "range",
+            min: "1",
+            max: "5",
+            step: "1",
+            value: speed,
+            onChange: (e) => setSpeed(Number(e.target.value)),
+            className: "w-full accent-primary bg-muted rounded-lg h-2 cursor-pointer my-2",
+            "aria-label": "落下速度レベル"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "flex justify-center items-center gap-3 mt-1", children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: handleMoveLeft,
+            className: "w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform",
+            "aria-label": "左へ移動",
+            children: /* @__PURE__ */ jsx("span", { className: "material-icons !text-xl", children: "arrow_back" })
+          }
+        ),
+        /* @__PURE__ */ jsxs(
+          "button",
+          {
+            onClick: handleFlipEmoticon,
+            className: "h-12 px-4 rounded-full bg-primary hover:bg-primary/90 text-white flex items-center justify-center font-medium text-xs sm:text-sm active:scale-95 transition-transform gap-1",
+            "aria-label": "左右反転",
+            children: [
+              /* @__PURE__ */ jsx("span", { className: "material-icons !text-sm", children: "flip" }),
+              /* @__PURE__ */ jsx("span", { children: "左右反転" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: handleMoveDown,
+            className: "w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform",
+            "aria-label": "下へ落とす",
+            children: /* @__PURE__ */ jsx("span", { className: "material-icons !text-xl", children: "arrow_downward" })
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: handleMoveRight,
+            className: "w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform",
+            "aria-label": "右へ移動",
+            children: /* @__PURE__ */ jsx("span", { className: "material-icons !text-xl", children: "arrow_forward" })
+          }
+        )
+      ] })
+    ] })
+  ] });
+}
+function App() {
+  return /* @__PURE__ */ jsx(ErrorBoundary, { fallback: /* @__PURE__ */ jsx("div", { className: "p-5 text-sm text-error", children: "エラーが発生しました。" }), children: /* @__PURE__ */ jsx(FallPuzzleGame, {}) });
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  /* @__PURE__ */ jsx(React.StrictMode, { children: /* @__PURE__ */ jsx(App, {}) })
+);
+
+</script><style>
+/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-ordinal: initial;
+      --tw-slashed-zero: initial;
+      --tw-numeric-figure: initial;
+      --tw-numeric-spacing: initial;
+      --tw-numeric-fraction: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-duration: initial;
+    }
+  }
+}
+
+@layer theme {
+  :root, :host {
+    --font-sans: "Google Sans", "Roboto", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --color-amber-300: oklch(87.9% .169 91.605);
+    --color-amber-400: oklch(82.8% .189 84.429);
+    --color-amber-500: oklch(76.9% .188 70.08);
+    --color-amber-600: oklch(66.6% .179 58.318);
+    --color-amber-950: oklch(27.9% .077 45.635);
+    --color-yellow-400: oklch(85.2% .199 91.936);
+    --color-emerald-400: oklch(76.5% .177 163.223);
+    --color-emerald-500: oklch(69.6% .17 162.48);
+    --color-teal-300: oklch(85.5% .138 181.071);
+    --color-teal-500: oklch(70.4% .14 182.503);
+    --color-sky-400: oklch(74.6% .16 232.661);
+    --color-indigo-600: oklch(51.1% .262 276.966);
+    --color-slate-300: oklch(86.9% .022 252.894);
+    --color-slate-400: oklch(70.4% .04 256.788);
+    --color-slate-800: oklch(27.9% .041 260.031);
+    --color-slate-900: oklch(20.8% .042 265.755);
+    --color-slate-950: oklch(12.9% .042 264.695);
+    --color-stone-50: oklch(98.5% .001 106.423);
+    --color-stone-100: oklch(97% .001 106.424);
+    --color-stone-200: oklch(92.3% .003 48.717);
+    --color-stone-300: oklch(86.9% .005 56.366);
+    --color-stone-500: oklch(55.3% .013 58.071);
+    --color-stone-600: oklch(44.4% .011 73.639);
+    --color-stone-700: oklch(37.4% .01 67.558);
+    --color-stone-800: oklch(26.8% .007 34.298);
+    --color-black: #000;
+    --color-white: #fff;
+    --spacing: .25rem;
+    --text-xs: .75rem;
+    --text-xs--line-height: calc(1 / .75);
+    --text-sm: .875rem;
+    --text-sm--line-height: calc(1.25 / .875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --radius-md: .375rem;
+    --radius-lg: .5rem;
+    --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
+    --animate-bounce: bounce 1s infinite;
+    --aspect-video: 16 / 9;
+    --default-transition-duration: .15s;
+    --default-transition-timing-function: cubic-bezier(.31, .94, .34, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-primary: var(--primary, #336ef3);
+    --color-primary-hover: var(--primary-hover, #395fe1);
+    --color-error: var(--brand-red, #ea4335);
+    --color-warning: var(--brand-yellow, #fbbc04);
+    --color-success: var(--brand-green, #34a853);
+    --color-background: var(--surface-container-de-emphasis, #f7f8fa);
+    --color-card: var(--surface-container-de-emphasis, #f7f8fa);
+    --color-card-hover: var(--surface-container-high, #e9ebf0);
+    --color-border: var(--divider, #dcdfe5);
+    --color-input: var(--surface-container, #f0f2f5);
+    --color-secondary: var(--surface-container-high, #e9ebf0);
+    --color-secondary-hover: var(--surface-container-highest, #e1e3e8);
+    --color-accent: var(--surface-container-highest, #e1e3e8);
+    --color-accent-foreground: var(--on-surface-default, #0a0a0a);
+    --color-muted: var(--surface-container, #f0f2f5);
+    --color-muted-foreground: var(--on-surface-de-emphasis, #56595e);
+    --color-foreground: var(--on-surface-default, #0a0a0a);
+    --color-disabled: var(--surface-container, #f0f2f5);
+    --color-disabled-foreground: var(--disabled-foreground, #95989c);
+  }
+}
+
+@layer base {
+  *, :after, :before, ::backdrop {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::file-selector-button {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, :host {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    line-height: 1.5;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    -webkit-text-decoration: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+
+  b, strong {
+    font-weight: bolder;
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub, sup {
+    vertical-align: baseline;
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+  }
+
+  sub {
+    bottom: -.25em;
+  }
+
+  sup {
+    top: -.5em;
+  }
+
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+
+  :-moz-focusring {
+    outline: auto;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  ol, ul, menu {
+    list-style: none;
+  }
+
+  img, svg, video, canvas, audio, iframe, embed, object {
+    vertical-align: middle;
+    display: block;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button, input, select, optgroup, textarea {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    opacity: 1;
+    background-color: #0000;
+    border-radius: 0;
+  }
+
+  ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    opacity: 1;
+    background-color: #0000;
+    border-radius: 0;
+  }
+
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+
+  ::placeholder {
+    opacity: 1;
+  }
+
+  @supports (not ((-webkit-appearance: -apple-pay-button))) or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentColor;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      ::placeholder {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+
+  ::-webkit-datetime-edit {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-year-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-month-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-day-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-hour-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-minute-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-second-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-millisecond-field {
+    padding-block: 0;
+  }
+
+  ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  button, input:where([type="button"], [type="reset"], [type="submit"]) {
+    appearance: button;
+  }
+
+  ::file-selector-button {
+    appearance: button;
+  }
+
+  ::-webkit-inner-spin-button {
+    height: auto;
+  }
+
+  ::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+
+@layer components;
+
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .fixed {
+    position: fixed;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .static {
+    position: static;
+  }
+
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
+
+  .right-4 {
+    right: calc(var(--spacing) * 4);
+  }
+
+  .bottom-2 {
+    bottom: calc(var(--spacing) * 2);
+  }
+
+  .left-4 {
+    left: calc(var(--spacing) * 4);
+  }
+
+  .z-10 {
+    z-index: 10;
+  }
+
+  .z-20 {
+    z-index: 20;
+  }
+
+  .m-0 {
+    margin: calc(var(--spacing) * 0);
+  }
+
+  .-my-3 {
+    margin-block: calc(var(--spacing) * -3);
+  }
+
+  .my-2 {
+    margin-block: calc(var(--spacing) * 2);
+  }
+
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+
+  .box-border {
+    box-sizing: border-box;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .table {
+    display: table;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1;
+  }
+
+  .aspect-video {
+    aspect-ratio: var(--aspect-video);
+  }
+
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
+
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+
+  .h-full {
+    height: 100%;
+  }
+
+  .w-9 {
+    width: calc(var(--spacing) * 9);
+  }
+
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+
+  .w-14 {
+    width: calc(var(--spacing) * 14);
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .max-w-\[420px\] {
+    max-width: 420px;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .flex-grow, .grow {
+    flex-grow: 1;
+  }
+
+  .table-fixed {
+    table-layout: fixed;
+  }
+
+  .border-collapse {
+    border-collapse: collapse;
+  }
+
+  .origin-bottom {
+    transform-origin: bottom;
+  }
+
+  .-translate-x-1 {
+    --tw-translate-x: calc(var(--spacing) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .-translate-y-1 {
+    --tw-translate-y: calc(var(--spacing) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .-translate-y-1\/2 {
+    --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .scale-90 {
+    --tw-scale-x: 90%;
+    --tw-scale-y: 90%;
+    --tw-scale-z: 90%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
+  .scale-105 {
+    --tw-scale-x: 105%;
+    --tw-scale-y: 105%;
+    --tw-scale-z: 105%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
+  .scale-110 {
+    --tw-scale-x: 110%;
+    --tw-scale-y: 110%;
+    --tw-scale-z: 110%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
+  .transform {
+    transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
+  }
+
+  .animate-bounce {
+    animation: var(--animate-bounce);
+  }
+
+  .animate-pulse {
+    animation: var(--animate-pulse);
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .touch-none {
+    touch-action: none;
+  }
+
+  .resize {
+    resize: both;
+  }
+
+  .grid-cols-\[repeat\(14\,minmax\(0\,1fr\)\)\] {
+    grid-template-columns: repeat(14, minmax(0, 1fr));
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .items-stretch {
+    align-items: stretch;
+  }
+
+  .justify-between {
+    justify-content: space-between;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .justify-end {
+    justify-content: flex-end;
+  }
+
+  .gap-0 {
+    gap: calc(var(--spacing) * 0);
+  }
+
+  .gap-0\.5 {
+    gap: calc(var(--spacing) * .5);
+  }
+
+  .gap-1 {
+    gap: calc(var(--spacing) * 1);
+  }
+
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .rounded {
+    border-radius: .25rem;
+  }
+
+  .rounded-full {
+    border-radius: 3.40282e38px;
+  }
+
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+
+  .rounded-t {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+  }
+
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+
+  .border-amber-400 {
+    border-color: var(--color-amber-400);
+  }
+
+  .border-black {
+    border-color: var(--color-black);
+  }
+
+  .border-border {
+    border-color: var(--color-border);
+  }
+
+  .border-emerald-500 {
+    border-color: var(--color-emerald-500);
+  }
+
+  .border-slate-800 {
+    border-color: var(--color-slate-800);
+  }
+
+  .border-stone-200 {
+    border-color: var(--color-stone-200);
+  }
+
+  .border-stone-300 {
+    border-color: var(--color-stone-300);
+  }
+
+  .border-teal-500 {
+    border-color: var(--color-teal-500);
+  }
+
+  .border-white {
+    border-color: var(--color-white);
+  }
+
+  .bg-amber-400 {
+    background-color: var(--color-amber-400);
+  }
+
+  .bg-amber-500 {
+    background-color: var(--color-amber-500);
+  }
+
+  .bg-amber-950 {
+    background-color: var(--color-amber-950);
+  }
+
+  .bg-black {
+    background-color: var(--color-black);
+  }
+
+  .bg-card {
+    background-color: var(--color-card);
+  }
+
+  .bg-muted {
+    background-color: var(--color-muted);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-slate-800 {
+    background-color: var(--color-slate-800);
+  }
+
+  .bg-slate-900 {
+    background-color: var(--color-slate-900);
+  }
+
+  .bg-slate-950 {
+    background-color: var(--color-slate-950);
+  }
+
+  .bg-stone-50 {
+    background-color: var(--color-stone-50);
+  }
+
+  .bg-stone-100 {
+    background-color: var(--color-stone-100);
+  }
+
+  .bg-stone-200 {
+    background-color: var(--color-stone-200);
+  }
+
+  .bg-stone-800 {
+    background-color: var(--color-stone-800);
+  }
+
+  .bg-transparent {
+    background-color: #0000;
+  }
+
+  .bg-white {
+    background-color: var(--color-white);
+  }
+
+  .bg-white\/90 {
+    background-color: #ffffffe6;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/90 {
+      background-color: color-mix(in oklab, var(--color-white) 90%, transparent);
+    }
+  }
+
+  .bg-white\/95 {
+    background-color: #fffffff2;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/95 {
+      background-color: color-mix(in oklab, var(--color-white) 95%, transparent);
+    }
+  }
+
+  .bg-gradient-to-t {
+    --tw-gradient-position: to top in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+
+  .from-amber-600 {
+    --tw-gradient-from: var(--color-amber-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .from-indigo-600 {
+    --tw-gradient-from: var(--color-indigo-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .to-sky-400 {
+    --tw-gradient-to: var(--color-sky-400);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .to-yellow-400 {
+    --tw-gradient-to: var(--color-yellow-400);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
+  }
+
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
+  }
+
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+
+  .px-0 {
+    padding-inline: calc(var(--spacing) * 0);
+  }
+
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+
+  .pb-8 {
+    padding-bottom: calc(var(--spacing) * 8);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-end {
+    text-align: end;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .\!text-base {
+    font-size: var(--text-base) !important;
+    line-height: var(--tw-leading, var(--text-base--line-height)) !important;
+  }
+
+  .\!text-sm {
+    font-size: var(--text-sm) !important;
+    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;
+  }
+
+  .\!text-xl {
+    font-size: var(--text-xl) !important;
+    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;
+  }
+
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+
+  .text-\[9px\] {
+    font-size: 9px;
+  }
+
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
+  }
+
+  .leading-normal {
+    --tw-leading: var(--leading-normal);
+    line-height: var(--leading-normal);
+  }
+
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
+  }
+
+  .font-black {
+    --tw-font-weight: var(--font-weight-black);
+    font-weight: var(--font-weight-black);
+  }
+
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .text-amber-300 {
+    color: var(--color-amber-300);
+  }
+
+  .text-amber-400 {
+    color: var(--color-amber-400);
+  }
+
+  .text-black {
+    color: var(--color-black);
+  }
+
+  .text-emerald-400 {
+    color: var(--color-emerald-400);
+  }
+
+  .text-error {
+    color: var(--color-error);
+  }
+
+  .text-foreground {
+    color: var(--color-foreground);
+  }
+
+  .text-muted-foreground {
+    color: var(--color-muted-foreground);
+  }
+
+  .text-slate-300 {
+    color: var(--color-slate-300);
+  }
+
+  .text-slate-400 {
+    color: var(--color-slate-400);
+  }
+
+  .text-slate-950 {
+    color: var(--color-slate-950);
+  }
+
+  .text-stone-500 {
+    color: var(--color-stone-500);
+  }
+
+  .text-stone-600 {
+    color: var(--color-stone-600);
+  }
+
+  .text-stone-700 {
+    color: var(--color-stone-700);
+  }
+
+  .text-teal-300 {
+    color: var(--color-teal-300);
+  }
+
+  .text-transparent {
+    color: #0000;
+  }
+
+  .text-white {
+    color: var(--color-white);
+  }
+
+  .tabular-nums {
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal, ) var(--tw-slashed-zero, ) var(--tw-numeric-figure, ) var(--tw-numeric-spacing, ) var(--tw-numeric-fraction, );
+  }
+
+  .underline {
+    text-decoration-line: underline;
+  }
+
+  .accent-primary {
+    accent-color: var(--color-primary);
+  }
+
+  .shadow-inner {
+    --tw-shadow: inset 0 2px 4px 0 var(--tw-shadow-color, #0000000d);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, #0000001a), 0 4px 6px -4px var(--tw-shadow-color, #0000001a);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .shadow-md {
+    --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, #0000001a), 0 2px 4px -2px var(--tw-shadow-color, #0000001a);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .shadow-sm {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a), 0 1px 2px -1px var(--tw-shadow-color, #0000001a);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .ring-4 {
+    --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .shadow-amber-400 {
+    --tw-shadow-color: oklch(82.8% .189 84.429);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .shadow-amber-400 {
+      --tw-shadow-color: color-mix(in oklab, var(--color-amber-400) var(--tw-shadow-alpha), transparent);
+    }
+  }
+
+  .shadow-amber-500 {
+    --tw-shadow-color: oklch(76.9% .188 70.08);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .shadow-amber-500 {
+      --tw-shadow-color: color-mix(in oklab, var(--color-amber-500) var(--tw-shadow-alpha), transparent);
+    }
+  }
+
+  .shadow-primary {
+    --tw-shadow-color: var(--color-primary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .shadow-primary {
+      --tw-shadow-color: color-mix(in oklab, var(--color-primary) var(--tw-shadow-alpha), transparent);
+    }
+  }
+
+  .ring-amber-500 {
+    --tw-ring-color: var(--color-amber-500);
+  }
+
+  .ring-black {
+    --tw-ring-color: var(--color-black);
+  }
+
+  .ring-black\/10 {
+    --tw-ring-color: #0000001a;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .ring-black\/10 {
+      --tw-ring-color: color-mix(in oklab, var(--color-black) 10%, transparent);
+    }
+  }
+
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+
+  .filter {
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  }
+
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+  }
+
+  .duration-200 {
+    --tw-duration: .2s;
+    transition-duration: .2s;
+  }
+
+  .duration-300 {
+    --tw-duration: .3s;
+    transition-duration: .3s;
+  }
+
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-primary\/90:hover {
+      background-color: var(--color-primary);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-primary\/90:hover {
+        background-color: color-mix(in oklab, var(--color-primary) 90%, transparent);
+      }
+    }
+
+    .hover\:bg-secondary-hover:hover {
+      background-color: var(--color-secondary-hover);
+    }
+
+    .hover\:bg-stone-800:hover {
+      background-color: var(--color-stone-800);
+    }
+  }
+
+  .active\:scale-95:active {
+    --tw-scale-x: 95%;
+    --tw-scale-y: 95%;
+    --tw-scale-z: 95%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
+  .disabled\:opacity-40:disabled {
+    opacity: .4;
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:text-sm {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+
+    .sm\:text-xs {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-primary: var(--primary, #336ef3);
+    --color-primary-hover: var(--primary-hover, #395fe1);
+    --color-error: var(--brand-red, #ea4335);
+    --color-warning: var(--brand-yellow, #fbbc04);
+    --color-success: var(--brand-green, #34a853);
+    --color-background: var(--surface-container-de-emphasis, #272930);
+    --color-card: var(--surface-container-de-emphasis, #272930);
+    --color-card-hover: var(--surface-container-high, #363840);
+    --color-border: var(--divider, #363840);
+    --color-input: var(--surface-container, #2c2e35);
+    --color-secondary: var(--surface-container-high, #363840);
+    --color-secondary-hover: var(--surface-container-highest, #42444d);
+    --color-accent: var(--surface-container-highest, #42444d);
+    --color-accent-foreground: var(--on-surface-default, #e6e8f0);
+    --color-muted: var(--surface-container, #2c2e35);
+    --color-muted-foreground: var(--on-surface-de-emphasis, #adafb8);
+    --color-foreground: var(--on-surface-default, #e6e8f0);
+    --color-disabled: var(--surface-container, #2c2e35);
+    --color-disabled-foreground: var(--disabled-foreground, #797c90);
+  }
+}
+
+.dark {
+  --color-primary: var(--primary, #336ef3);
+  --color-primary-hover: var(--primary-hover, #395fe1);
+  --color-error: var(--brand-red, #ea4335);
+  --color-warning: var(--brand-yellow, #fbbc04);
+  --color-success: var(--brand-green, #34a853);
+  --color-background: var(--surface-container-de-emphasis, #272930);
+  --color-card: var(--surface-container-de-emphasis, #272930);
+  --color-card-hover: var(--surface-container-high, #363840);
+  --color-border: var(--divider, #363840);
+  --color-input: var(--surface-container, #2c2e35);
+  --color-secondary: var(--surface-container-high, #363840);
+  --color-secondary-hover: var(--surface-container-highest, #42444d);
+  --color-accent: var(--surface-container-highest, #42444d);
+  --color-accent-foreground: var(--on-surface-default, #e6e8f0);
+  --color-muted: var(--surface-container, #2c2e35);
+  --color-muted-foreground: var(--on-surface-de-emphasis, #adafb8);
+  --color-foreground: var(--on-surface-default, #e6e8f0);
+  --color-disabled: var(--surface-container, #2c2e35);
+  --color-disabled-foreground: var(--disabled-foreground, #797c90);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: .6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert();
+    opacity: .7;
+  }
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert();
+  opacity: .7;
+}
+
+[dir="rtl"] svg {
+  direction: ltr;
+}
+
+[dir="rtl"] svg text {
+  unicode-bidi: plaintext;
+}
+
+[dir="rtl"] .material-icons {
+  direction: rtl;
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-leading {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-fraction {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+
+@property --tw-blur {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-invert {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-duration {
+  syntax: "*";
+  inherits: false
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(.8, 0, 1, 1);
+    transform: translateY(-25%);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0, 0, .2, 1);
+    transform: none;
+  }
+}
+
+</style><link href="https://www.gstatic.com/_/mss/search-next/_/ss/k=search-next.ss.TQsxQv8pJhs.L.B1.O/am=AB4AAACGACFQAg/d=1/ed=1/dg=2/rs=AE5fCmS6gw52GNq_ukdifS7iYg4Lmn-MyA/ee=/m=capy_widget_colors" rel="stylesheet"></head>
+    <body class="">
+  
+  <div id="root"><div dir="ltr" lang="ja" class="w-full bg-card text-foreground flex flex-col font-sans select-none overflow-hidden"><div class="flex items-center justify-between px-5 py-3 border-b border-border bg-card"><div class="flex gap-4"><div class="flex flex-col"><span class="text-xs text-muted-foreground font-medium">スコア</span><span class="text-lg font-medium tabular-nums">0</span></div><div class="flex flex-col"><span class="text-xs text-muted-foreground font-medium">速度</span><span class="text-lg font-medium tabular-nums">1</span></div></div><div class="flex gap-2"><button class="w-9 h-9 rounded-full flex items-center justify-center bg-muted hover:bg-secondary-hover transition-colors disabled:opacity-40" aria-label="再開"><span class="material-icons !text-base">play_arrow</span></button><button class="w-9 h-9 rounded-full flex items-center justify-center bg-muted hover:bg-secondary-hover transition-colors" aria-label="リセット"><span class="material-icons !text-base">refresh</span></button></div></div><div class="relative w-full border-b border-border bg-white flex items-stretch justify-center p-3 pb-8 gap-3"><div class="relative flex-1 max-w-[420px] bg-white rounded-lg border p-1 overflow-hidden transition-colors duration-200 border-stone-300"><div class="grid grid-cols-[repeat(14,minmax(0,1fr))] gap-0 w-full bg-white"><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">(</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">´</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">-</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">ω</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">-</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">｀</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-transparent text-black font-black scale-110">)</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div><div class="aspect-square w-full relative flex items-center justify-center select-none bg-white font-bold"><div class="absolute inset-0"><div class="w-full h-full flex items-center justify-center font-mono font-bold transition-all duration-75 text-center text-[10px] xs:text-xs sm:text-sm leading-none bg-white text-transparent">.</div></div></div></div><div class="absolute inset-0 pointer-events-none z-20 overflow-hidden"></div></div><div class="w-14 flex flex-col items-center bg-white border border-stone-300 rounded-lg p-2 justify-between"><div class="text-center w-full flex flex-col items-center gap-0.5"><span class="text-[10px] font-bold text-black leading-tight">SP</span><span class="text-xs font-bold text-stone-700 tabular-nums">0/10</span></div><div class="flex-1 w-full bg-stone-50 border border-stone-200 rounded-md relative my-2 overflow-hidden flex flex-col justify-end"><div class="w-full transition-all duration-300 rounded-t bg-stone-800" style="height: 0%;"></div></div><div class="text-[9px] text-stone-500 text-center leading-normal scale-90 origin-bottom">10個で<br>発動!</div></div><div class="absolute bottom-2 left-4 right-4 text-center pointer-events-none z-10"><span class="text-[10px] sm:text-xs text-stone-600 bg-white/90 px-3 py-1 rounded-full border border-stone-200 shadow-sm">1マス消すごとにゲージが貯まります！10に達すると「消」ブロックが出現！</span></div></div><div class="p-5 flex flex-col gap-4 bg-card"><div class="flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-sm font-medium text-muted-foreground">落下速度レベル</span><span class="text-sm font-medium tabular-nums">1</span></div><input type="range" min="1" max="5" step="1" class="w-full accent-primary bg-muted rounded-lg h-2 cursor-pointer my-2" aria-label="落下速度レベル" value="1"></div><div class="flex justify-center items-center gap-3 mt-1"><button class="w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform" aria-label="左へ移動"><span class="material-icons !text-xl">arrow_back</span></button><button class="h-12 px-4 rounded-full bg-primary hover:bg-primary/90 text-white flex items-center justify-center font-medium text-xs sm:text-sm active:scale-95 transition-transform gap-1" aria-label="左右反転"><span class="material-icons !text-sm">flip</span><span>左右反転</span></button><button class="w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform" aria-label="下へ落とす"><span class="material-icons !text-xl">arrow_downward</span></button><button class="w-12 h-12 rounded-full bg-muted hover:bg-secondary-hover text-foreground flex items-center justify-center active:scale-95 transition-transform" aria-label="右へ移動"><span class="material-icons !text-xl">arrow_forward</span></button></div></div></div></div></body></html>
