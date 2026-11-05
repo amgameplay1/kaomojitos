@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>モノトーン顔文字パズル</title>
+<style>
+* {
+box-sizing: border-box;
+user-select: none;
+}
+body {
+background-color: #ffffff;
+color: #000000;
+font-family: sans-serif;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+margin: 0;
+}
+h1 {
+font-weight: bold;
+margin-bottom: 10px;
+}
+.container {
+display: flex;
+align-items: flex-start;
+gap: 20px;
+}
+#field {
+display: grid;
+grid-template-columns: repeat(12, 35px);
+grid-template-rows: repeat(20, 35px);
+background-color: #ffffff;
+position: relative;
+}
+.cell {
+width: 35px;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+font-weight: bold;
+color: #000000;
+}
+.sidebar {
+display: flex;
+flex-direction: column;
+gap: 15px;
+font-weight: bold;
+width: 120px;
+}
+.score-board, .gauge-container {
+border: none;
+padding: 5px 0;
+}
+.gauge-label {
+font-size: 18px;
+margin-bottom: 5px;
+}
+.gauge-bar-outer {
+width: 100%;
+height: 150px;
+border: 3px solid #000000;
+position: relative;
+display: flex;
+align-items: flex-end;
+}
+.gauge-bar-inner {
+width: 100%;
+background-color: #000000;
+transition: height 0.1s ease;
+height: 0%;
+}
+.btn-flip {
+background-color: #ffffff;
+color: #000000;
+border: 3px solid #000000;
+padding: 10px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+text-align: center;
+}
+.btn-flip:active {
+background-color: #000000;
+color: #ffffff;
+}
+.flash {
+animation: burst 0.4s ease-out;
+}
+@keyframes burst {
+0% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.5; transform: scale(1.2); }
+100% { opacity: 0; transform: scale(1); }
+}
+.controls-info {
+margin-top: 15px;
+font-size: 12px;
+text-align: center;
+line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<h1>Monotone Puzzle</h1>
+
+<div class="container">
+<!-- ゲームメイン画面 -->
+<div id="field"></div>
+
+<!-- 右側UI（SPゲージなど） -->
+<div class="sidebar">
+<div class="score-board">
+<div>SCORE</div>
+<div id="score">0</div>
+</div>
+<div class="gauge-container">
+<div class="gauge-label">SP</div>
+<div class="gauge-bar-outer">
+<div id="gauge-inner" class="gauge-bar-inner"></div>
+</div>
+</div>
+
+<button class="btn-flip" id="flip-btn">左右反転</button>
+</div>
+</div>
+
+<div class="controls-info">
+操作方法:<br>
+← 左移動 / → 右移動 / ↓ 加速落下<br>
+「左右反転」ボタン または ↑キー / スペースキー で反転
+</div>
+
+<script>
+// 使用する20種類の顔文字
+const emoticons = [
+"(´▽｀)", "＼(^o＼)", "(*‘∀‘)", "(о´∀`о)", "(≦▽≦)",
+"( ;∀;)", "(ノД`)", "(´；ω；`)", "｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡", "(っ°Д°)っ",
+"( ｀ー´)", "٩(๑`^´๑)۶", "(ノ｀Д´)", "(。-`ω-)", "（#^ω^）",
+"( ﾟДﾟ)", "(；ﾟДﾟ)", "Σ(･ω･ﾉ)", "(´・ω・`)", "(*´ω｀)"
+];
+const COLS = 12; // 幅2倍（12列）
+const ROWS = 20;
+const fieldEl = document.getElementById('field');
+const scoreEl = document.getElementById('score');
+const gaugeInnerEl = document.getElementById('gauge-inner');
+const flipBtn = document.getElementById('flip-btn');
+
+let grid = Array.from({ length: ROWS }, () => Array(COLS).fill(''));
+let score = 0;
+let clearedCount = 0;
+
+// 現在落ちているブロックの情報
+let currentBlock = {
+cells: [], // {r, c, char}
+isSpecial: false
+};
+// Web Audio API によるサウンド生成
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playMatchSound() {
+const osc = audioCtx.createOscillator();
+const gain = audioCtx.createGain();
+osc.type = 'sine';
+osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5 (ピコーン)
+osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start();
+osc.stop(audioCtx.currentTime + 0.3);
+}
+function playSPSound() {
+// 爽快な電子シンセサウンド (高音のアルペジオ風)
+const now = audioCtx.currentTime;
+const freqs = [880, 1318.51, 1760, 2637.02];
+freqs.forEach((f, i) => {
+const osc = audioCtx.createOscillator();
+const gain = audioCtx.createGain();
+osc.type = 'triangle';
+osc.frequency.setValueAtTime(f, now + i * 0.05);
+gain.gain.setValueAtTime(0.15, now + i * 0.05);
+gain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.05 + 0.3);
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start(now + i * 0.05);
+osc.stop(now + i * 0.05 + 0.3);
+});
+}
+// 初期画面生成
+function initField() {
+fieldEl.innerHTML = '';
+for (let r = 0; r < ROWS; r++) {
+for (let c = 0; c < COLS; c++) {
+const cell = document.createElement('div');
+cell.className = 'cell';
+cell.id = `cell-${r}-${c}`;
+fieldEl.appendChild(cell);
+}
+}
+}
+
+// 画面の更新
+function draw() {
+// 固定されたブロックの描画
+for (let r = 0; r < ROWS; r++) {
+for (let c = 0; c < COLS; c++) {
+const cell = document.getElementById(`cell-${r}-${c}`);
+cell.textContent = grid[r][c];
+}
+}
+// 落下中ブロックの描画
+currentBlock.cells.forEach(cell => {
+if (cell.r >= 0 && cell.r < ROWS) {
+const cellEl = document.getElementById(`cell-${cell.r}-${cell.c}`);
+if (cellEl) cellEl.textContent = cell.char;
+}
+});
+
+// ゲージの更新 (10マスで満タン)
+const percent = Math.min((clearedCount / 10) * 100, 100);
+gaugeInnerEl.style.height = `${percent}%`;
+}
+// ブロックの生成
+function spawnBlock() {
+const startCol = Math.floor(COLS / 2) - 2;
+if (clearedCount >= 10) {
+// 「消」ブロックの生成
+currentBlock.isSpecial = true;
+currentBlock.cells = [{ r: 0, c: Math.floor(COLS / 2), char: '消' }];
+clearedCount = 0; // ゲージリセット
+} else {
+// 通常の顔文字（5マス）の生成
+currentBlock.isSpecial = false;
+const emo = emoticons[Math.floor(Math.random() * emoticons.length)];
+currentBlock.cells = [];
+for (let i = 0; i < emo.length; i++) {
+currentBlock.cells.push({ r: 0, c: startCol + i, char: emo[i] });
+}
+}
+
+// ゲームオーバー判定
+const isGameOver = currentBlock.cells.some(cell => grid[cell.r][cell.c] !== '');
+if (isGameOver) {
+alert("GAME OVER!\nScore: " + score);
+grid = Array.from({ length: ROWS }, () => Array(COLS).fill(''));
+score = 0;
+clearedCount = 0;
+scoreEl.textContent = score;
+spawnBlock();
+}
+}
+// 移動処理
+function move(dc, dr) {
+const canMove = currentBlock.cells.every(cell => {
+const nextR = cell.r + dr;
+const nextC = cell.c + dc;
+if (nextC < 0 || nextC >= COLS || nextR >= ROWS) return false;
+if (nextR >= 0 && grid[nextR][nextC] !== '') return false;
+return true;
+});
+
+if (canMove) {
+currentBlock.cells.forEach(cell => {
+cell.r += dr;
+cell.c += dc;
+});
+draw();
+return true;
+}
+return false;
+}
+
+// 左右反転処理
+function flipBlock() {
+if (currentBlock.isSpecial) return; // 「消」ブロックは1マスなので反転なし
+
+const cells = currentBlock.cells;
+const minC = Math.min(...cells.map(c => c.c));
+const maxC = Math.max(...cells.map(c => c.c));
+const centerC = (minC + maxC) / 2;
+
+// 反転した文字順を作成
+const originalChars = cells.map(c => c.char);
+const flippedChars = [...originalChars].reverse().map(ch => {
+if (ch === '(') return ')';
+if (ch === ')') return '(';
+if (ch === '＼') return '／';
+if (ch === '／') return '＼';
+return ch;
+});
+
+const nextCells = cells.map((cell, index) => {
+const newC = Math.round(centerC + (centerC - cell.c));
+return { r: cell.r, c: newC, char: flippedChars[index] };
+});
+
+const canFlip = nextCells.every(cell =>
+cell.c >= 0 && cell.c < COLS && cell.r < ROWS && (cell.r < 0 || grid[cell.r][cell.c] === '')
+);
+
+if (canFlip) {
+currentBlock.cells = nextCells;
+draw();
+}
+}
+// 固定と消去判定
+function lockBlock() {
+currentBlock.cells.forEach(cell => {
+if (cell.r >= 0) grid[cell.r][cell.c] = cell.char;
+});
+
+if (currentBlock.isSpecial) {
+processSpecialClear();
+} else {
+processNormalClear();
+}
+
+spawnBlock();
+draw();
+}
+
+// 通常消去の判定
+function processNormalClear() {
+let toClear = Array.from({ length: ROWS }, () => Array(COLS).fill(false));
+let found = false;
+
+for (let r = 0; r < ROWS; r++) {
+for (let c = 0; c < COLS; c++) {
+if (grid[r][c] === '') continue;
+if (c < COLS - 1 && grid[r][c] === grid[r][c+1]) {
+toClear[r][c] = true; toClear[r][c+1] = true; found = true;
+}
+if (r < ROWS - 1 && grid[r][c] === grid[r+1][c]) {
+toClear[r][c] = true; toClear[r+1][c] = true; found = true;
+}
+}
+}
+
+if (found) {
+playMatchSound();
+let matchCount = 0;
+for (let r = 0; r < ROWS; r++) {
+for (let c = 0; c < COLS; c++) {
+if (toClear[r][c]) {
+grid[r][c] = '';
+matchCount++;
+}
+}
+}
+score += matchCount * 10;
+clearedCount += matchCount;
+scoreEl.textContent = score;
+dropFloatingBlocks();
+processNormalClear();
+}
+}
+// 「消」ブロック効果：触れた文字全消去
+function processSpecialClear() {
+const specialCell = currentBlock.cells[0];
+const r = specialCell.r;
+const c = specialCell.c;
+
+const targets = [];
+const dirs = [[-1,0], [1,0], [0,-1], [0,1]];
+dirs.forEach(([dr, dc]) => {
+const nr = r + dr;
+const nc = c + dc;
+if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+const char = grid[nr][nc];
+if (char && char !== '' && char !== '消') {
+targets.push(char);
+}
+}
+});
+
+if (r >= 0 && r < ROWS && c >= 0 && c < COLS) grid[r][c] = '';
+
+if (targets.length > 0) {
+playSPSound();
+fieldEl.style.backgroundColor = '#eeeeee';
+setTimeout(() => fieldEl.style.backgroundColor = '#ffffff', 200);
+
+let matchCount = 0;
+for (let i = 0; i < ROWS; i++) {
+for (let j = 0; j < COLS; j++) {
+if (targets.includes(grid[i][j])) {
+grid[i][j] = '';
+matchCount++;
+}
+}
+}
+score += matchCount * 15;
+scoreEl.textContent = score;
+dropFloatingBlocks();
+processNormalClear();
+}
+}
+
+function dropFloatingBlocks() {
+for (let c = 0; c < COLS; c++) {
+let emptyRow = ROWS - 1;
+for (let r = ROWS - 1; r >= 0; r--) {
+if (grid[r][c] !== '') {
+if (r !== emptyRow) {
+grid[emptyRow][c] = grid[r][c];
+grid[r][c] = '';
+}
+emptyRow--;
+}
+}
+}
+}
+// ループ処理
+function gameLoop() {
+if (!move(0, 1)) {
+lockBlock();
+}
+}
+
+// キー操作
+window.addEventListener('keydown', (e) => {
+if (['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', ' '].includes(e.key)) {
+e.preventDefault();
+}
+if (e.key === 'ArrowLeft') move(-1, 0);
+if (e.key === 'ArrowRight') move(1, 0);
+if (e.key === 'ArrowDown') move(0, 1);
+if (e.key === 'ArrowUp' || e.key === ' ') flipBlock();
+});
+
+flipBtn.addEventListener('click', () => {
+flipBlock();
+});
+
+// 開始
+initField();
+spawnBlock();
+draw();
+setInterval(gameLoop, 800);
+</script>
+</body>
+</html>
